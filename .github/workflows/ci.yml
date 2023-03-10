@@ -56,3 +56,12 @@ jobs:
           bump-minor-pre-major: true
           pull-request-title-pattern: "chore: release ${version}"
           include-v-in-tag: false
+      - name: Checkout
+        uses: actions/checkout@v2
+        if: ${{ steps.release.outputs.release_created }}
+      - name: LuaRocks Publish
+        uses: MunifTanjim/luarocks-publish-action@feat-initial-implementation
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          lua_version: 5.1.5
+          luarocks_version: 3.9.1

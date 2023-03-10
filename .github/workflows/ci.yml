@@ -37,3 +37,22 @@ jobs:
           luarocks install luacheck
       - name: Lint
         run: ./scripts/lint.sh --no-cache
+
+  release:
+    name: release
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: simple
+          package-name: dummy.lua
+          bump-minor-pre-major: true
+          pull-request-title-pattern: "chore: release ${version}"
+          include-v-in-tag: false

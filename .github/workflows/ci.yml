@@ -45,6 +45,7 @@ jobs:
     needs:
       - lint
     permissions:
+      actions: write
       contents: write
       pull-requests: write
     steps:
@@ -56,3 +57,10 @@ jobs:
           bump-minor-pre-major: true
           pull-request-title-pattern: "chore: release ${version}"
           include-v-in-tag: false
+      - name: Trigger Publish
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ steps.release.outputs.tag_name }}
+        run: |
+          gh workflow run --repo ${GITHUB_REPOSITORY} publish.yml -f version=${TAG_NAME}

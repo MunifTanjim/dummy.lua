@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/MunifTanjim/dummy.lua/compare/0.1.0...0.2.0) (2023-05-05)
+
+
+### Features
+
+* add message ([b7db49f](https://github.com/MunifTanjim/dummy.lua/commit/b7db49fe9d958e8c03127e8bb76e6cb2ee48c9e0))
+
 ## 0.1.0 (2023-03-18)
 
 

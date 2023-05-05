@@ -6,7 +6,6 @@ on:
       version:
         description: Version to publish
         required: false
-        default: ''
         type: string
       force:
         description: Force publish
@@ -23,11 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: LuaRocks Publish
         uses: MunifTanjim/luarocks-publish-action@feat-initial-implementation
         with:
           lua_version: 5.1.5
           luarocks_version: 3.9.1
           version: ${{ inputs.version }}
+          api_key: ${{ secrets.LUAROCKS_API_KEY }}
           force: ${{ inputs.force }}

@@ -1,6 +1,6 @@
 rockspec_format = "3.0"
 package = "dummy.lua"
-version = "dev"
+version = "dev-1"
 source = {
   url = "git+https://github.com/MunifTanjim/dummy.lua.git",
   tag = nil,

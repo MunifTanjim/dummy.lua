@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: LuaRocks Publish
-        uses: MunifTanjim/luarocks-publish-action@feat-initial-implementation
+        uses: MunifTanjim/luarocks-publish-action@feat-luarocks-compatible
         with:
           lua_version: 5.1.5
           luarocks_version: 3.9.1
